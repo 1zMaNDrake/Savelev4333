@@ -63,5 +63,12 @@ namespace Template_4333
             ibragimov.Show();
             this.Hide();
         }
+
+        private void German_Click(object sender, RoutedEventArgs e)
+        {
+            _4333_Savelev savelev = new _4333_Savelev();
+            savelev.Show();
+            this.Hide();
+        }
     }
 }
