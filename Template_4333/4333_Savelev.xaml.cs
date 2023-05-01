@@ -326,19 +326,18 @@ namespace Template_4333
                         cellRange.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
                         j++;
                     }
-                    foreach (var person in category)
-                    {
+                
                         Word.Paragraph DateParagraph = document.Paragraphs.Add();
                         Word.Range FirstDate = DateParagraph.Range;
                         Word.Range LastDate = DateParagraph.Range;
-                        FirstDate.Text = $"Дата первого заказа - {person.Дата_создания}";
+                        LastDate.Text = $"Дата последнего заказа - {category.Last().Дата_создания}";
+                        LastDate.InsertParagraphAfter(); 
+                        FirstDate.Text = $"Дата первого заказа - {category.First().Дата_создания}";
                         FirstDate.InsertParagraphAfter();
-                        LastDate.Text = $"Дата последнего заказа - {person.Дата_создания}";
-                        LastDate.InsertParagraphAfter();
+                        
 
                         document.Words.Last.InsertBreak(Word.WdBreakType.wdPageBreak);
-                        break;
-                    }
+                     
                 }
                 app.Visible = true;
                 document.SaveAs2(@"D:\outputFileWord.docx");
